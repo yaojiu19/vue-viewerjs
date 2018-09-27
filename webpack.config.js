@@ -1,12 +1,17 @@
 var path = require('path')
 var webpack = require('webpack')
 
+console.log(process.env.NODE_ENV)
+
 module.exports = {
-  entry: './src/main.js',
+  entry: process.env.NODE_ENV === 'production' ? './index.js' : './lib/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'vue-viewer.js',
+    library: 'VueViewer',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [

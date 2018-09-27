@@ -3,6 +3,7 @@
   "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "faima <faimaklg@163.com>",
+  "main": "dist/vue-viewer.js",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -10,12 +11,19 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "viewerjs": "^1.2.0",
     "vue": "^2.5.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "keywords": [
+    "vue",
+    "viewer",
+    "lightbox",
+    "灯箱"
   ],
   "devDependencies": {
     "babel-core": "^6.26.0",
