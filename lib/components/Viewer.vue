@@ -361,7 +361,6 @@ export default {
   margin: 5px;
   img{
     width: 100px;
-    height: 100px;
   }
 }
 </style>
