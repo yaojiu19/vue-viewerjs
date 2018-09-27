@@ -1,3 +1,3 @@
 import VueViewer from './lib/components/Viewer'
 
-export default comment
+export default VueViewer

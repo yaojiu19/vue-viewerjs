@@ -1,7 +1,7 @@
 {
   "name": "vue-viewerjs",
   "description": "基于viewer.js的vue灯箱",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "faima <faimaklg@163.com>",
   "main": "dist/vue-viewer.js",
   "license": "MIT",
