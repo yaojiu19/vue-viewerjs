@@ -41,7 +41,7 @@ npm i vue-viewerjs --save
 | :--------------- | :--- | ------------------------------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------ |
 | images           | ✘    | 图片数据，Object{url: '图片地址', title:' 标题 '}            | String, Object, Array            | -                                                            | -      |
 | inline           | ✘    | 是否启用内联模式                                             | Boolean                          | -                                                            | false  |
-| button           | ✘    | 显示右上角的按钮                                             | Boolean                          | -                                                            | false  |
+| button           | ✘    | 显示右上角的按钮                                             | Boolean                          | -                                                            | true   |
 | navbar           | ✘    | 导航栏的可见性 0/false：隐藏，1/true：显示，2：屏幕宽度大于768像素时显示，3：屏幕宽度大于992像素时显示，4：屏幕宽度大于1200像素时显示 | Boolean, Number                  | 见说明                                                       | 1      |
 | title            | ✘    | 标题的可见性 0/false：隐藏，1/true：显示，2：屏幕宽度大于768像素时显示，3：屏幕宽度大于992像素时显示，4：屏幕宽度大于1200像素时显示, Function: 自定义标题内容，[Number, Function]： Function(image, imageData) | Boolean, Number, Function, Array | 见说明                                                       | 1      |
 | toolbarType      | ✘    | 工具栏的可见性 0/false：隐藏，1/true：显示，2：屏幕宽度大于768像素时显示，3：屏幕宽度大于992像素时显示，4：屏幕宽度大于1200像素时显示 | Boolean, Number                  | 见说明                                                       | 1      |
