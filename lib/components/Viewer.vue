@@ -33,7 +33,7 @@ const TOOLBAR_OPTIONS = {    // {key: Boolean | Number | String | Function}，{k
 export default {
   name: 'VueViewer',
   props: {
-    images: {                // 是否启用内联模式
+    images: {
       type: [String, Object, Array]
     },
     inline: {                // 是否启用内联模式
@@ -63,7 +63,7 @@ export default {
       type: Boolean,
       default: true
     },
-    movable: {               // 是否可以移动移动图像
+    movable: {               // 是否可以移动图像
       type: Boolean,
       default: true
     },
@@ -135,7 +135,7 @@ export default {
       type: Number,
       default: 100
     },
-    url: {                   // 原始图像URL设置位置
+    url: {                   // 占位图片
       type: [String, Function],
       default: 'src'
     },
