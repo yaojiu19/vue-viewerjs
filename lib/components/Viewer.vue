@@ -36,6 +36,10 @@ export default {
     images: {
       type: [String, Object, Array]
     },
+    visible: {
+      type: Boolean,
+      default: false
+    },
     inline: {                // 是否启用内联模式
       type: Boolean,
       default: false
@@ -158,7 +162,8 @@ export default {
     return {
       list: [],
       index: 0,
-      toolbar: ''
+      toolbar: '',
+      closed: false
     }
   },
   watch: {
@@ -166,6 +171,15 @@ export default {
       this.$nextTick(() => {
         this.update()
       })
+    },
+    visible (newVal) {
+      if (this.closed === newVal) return
+      this.closed = newVal
+      if (newVal) {
+        this.show()
+      } else {
+        this.hide()
+      }
     },
     index () {
       this.$emit('input', this.index)
@@ -197,6 +211,7 @@ export default {
       } else {
         this.toolbar = this.toolbarType
       }
+      this.closed = this.visible
     },
     _viewerInit () {
       this.viewer = new Viewer(this.$refs.viewer, {
@@ -236,13 +251,17 @@ export default {
           this.$emit('show', event)
         },
         shown: (event) => {                 // 显示事件-结束
+          this.closed = true
           this.$emit('shown', event)
+          this.$emit('update:visible', true)
         },
         hide: (event) => {                  // 隐藏事件-开始
           this.$emit('hide', event)
         },
         hidden: (event) => {                // 隐藏事件-结束
+          this.closed = false
           this.$emit('hidden', event)
+          this.$emit('update:visible', false)
         },
         view: (event) => {                  // 切换事件-开始
           this.$emit('view', event)
@@ -258,94 +277,119 @@ export default {
           this.$emit('zoomed', event)
         }
       })
+      if (this.visible) {
+        this.show()
+      }
     },
     // 显示 immediate = 是否立即显示
     show (immediate) {
       this.viewer.show(immediate)
+      return this
     },
     // 隐藏 immediate = 是否立即隐藏
     hide (immediate) {
       this.viewer.hide(immediate)
+      return this
     },
     // 切换到图像到索引的图像位置，如果未显示灯箱，将首先显示灯箱。index = 索引
     view (index) {
       this.viewer.view(index)
+      return this
     },
     // 上一张，如果未显示灯箱，将首先显示灯箱。 loop = 是否循环
     prev (loop) {
       this.viewer.prev(loop)
+      return this
     },
     // 下一张，如果未显示灯箱，将首先显示灯箱。 loop = 是否循环
     next (loop) {
       this.viewer.next(loop)
+      return this
     },
     // 移动 offsetX = '在水平方向上移动尺寸（px）', offsetX = '在垂直方向移动尺寸（px）， 不填默认与offsetX相同'
     move (offsetX, offsetY) {
       this.viewer.move(offsetX, offsetY)
+      return this
     },
     // 移动到 x = '在水平方向移动到（px）', y = '在垂直方向移动到（px）， 不填默认与x相同'
     moveTo (x, y) {
       this.viewer.moveTo(x, x)
+      return this
     },
     // 缩放 ratio = '缩放比例，正数放大，负数缩小'， hasTooltip = '是否显示提示'
     zoom (ratio, hasTooltip) {
       this.viewer.zoom(ratio, hasTooltip)
+      return this
     },
     // 缩放到 ratio = '缩放到大小'， hasTooltip = '是否显示提示'
     zoomTo (ratio, hasTooltip) {
       this.viewer.zoomTo(ratio, hasTooltip)
+      return this
     },
     // 旋转 ratio = '旋转角度，正数顺时针，负数逆时针'
     rotate (degree) {
       this.viewer.rotate(degree)
+      return this
     },
     // 旋转到 ratio = '旋转到角度'
     rotateTo (degree) {
       this.viewer.rotateTo(degree)
+      return this
     },
     // 拉伸 scaleX = '在水平方向上拉伸比例', scaleY = '在垂直方向拉伸比例， 不填默认与scaleX相同'
     scale (scaleX, scaleY) {
       this.viewer.scale(scaleX, scaleY)
+      return this
     },
     // 水平方向上拉伸 scaleX = '在水平方向上拉伸比例'
     scaleX (scaleX) {
       this.viewer.scaleX(scaleX)
+      return this
     },
     // 垂直方向上拉伸 scaleY = '在垂直方向上拉伸比例'
     scaleY (scaleY) {
       this.viewer.scaleY(scaleY)
+      return this
     },
     // 播放 fullscreen = '是否全屏'
     play (fullscreen) {
       this.viewer.play(fullscreen)
+      return this
     },
     // 停止播放
     stop () {
       this.viewer.stop()
+      return this
     },
     // 进入模态模式
     full () {
       this.viewer.full()
+      return this
     },
     // 退出模态模式
     exit () {
       this.viewer.exit()
+      return this
     },
     // 显示当前比例
     tooltip () {
       this.viewer.tooltip()
+      return this
     },
     // 切换到在自然大小
     toggle () {
       this.viewer.toggle()
+      return this
     },
     // 初始化
     reset () {
       this.viewer.reset()
+      return this
     },
     // 更新
     update () {
       this.viewer.update()
+      return this
     },
     // 销毁
     destroy () {

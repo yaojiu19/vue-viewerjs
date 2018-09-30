@@ -1,12 +1,10 @@
 <template>
   <div class="">
-    <vue-viewer ref="myViewer" :images="photo" v-model="viewerVal">
+    <vue-viewer ref="myViewer" :images="photo" v-model="viewerVal" :visible.sync="isShow">
     </vue-viewer>
     <div class="btn_group">
       <input type="text" v-model.number="viewerVal">
       <button @click="addPhoto">添加一张图片</button>
-      <button @click="show">显示</button>
-      <button @click="hide">隐藏</button>
       <button @click="view(1)">查看第2张</button>
       <button @click="prev">上一张</button>
       <button @click="next">下一张</button>
@@ -25,6 +23,7 @@
       <button @click="exit">退出模态模式</button>
       <button @click="tooltip">显示当前比例</button>
       <button @click="toggle">在自然大小和初始大小之间切换</button>
+      <button @click="isShow = !isShow">显示切换{{isShow}}</button>
     </div>
   </div>
 </template>
@@ -38,12 +37,8 @@ export default {
   data () {
     return {
       photo: [{url: 'https://dummyimage.com/100x100', title: '哈哈哈'}, 'https://dummyimage.com/110x110', 'https://dummyimage.com/120x120'],
-      viewerVal: 0
-    }
-  },
-  watch: {
-    viewerVal () {
-      console.log('viewerVal', this.viewerVal)
+      viewerVal: 0,
+      isShow: false
     }
   },
   methods: {
@@ -52,12 +47,6 @@ export default {
         url: 'https://dummyimage.com/130x130',
         title: '添加的图片'
       })
-    },
-    show () {
-      this.$refs.myViewer.show()
-    },
-    hide () {
-      this.$refs.myViewer.hide()
     },
     view (index) {
       this.$refs.myViewer.view(1)
