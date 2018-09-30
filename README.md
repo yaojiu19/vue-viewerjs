@@ -40,6 +40,7 @@ npm i vue-viewerjs --save
 | 参数             | 必填 | 说明                                                         | 类型                             | 可选值                                                       | 默认值 |
 | :--------------- | :--- | ------------------------------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------ |
 | images           | ✘    | 图片数据，Object{url: '图片地址', title:' 标题 '}            | String, Object, Array            | -                                                            | -      |
+| visible          | ✘    | 是否显示，支持 .sync 修饰符                                  | boolean                          |                                                              | false  |
 | inline           | ✘    | 是否启用内联模式                                             | Boolean                          | -                                                            | false  |
 | button           | ✘    | 显示右上角的按钮                                             | Boolean                          | -                                                            | true   |
 | navbar           | ✘    | 导航栏的可见性 0/false：隐藏，1/true：显示，2：屏幕宽度大于768像素时显示，3：屏幕宽度大于992像素时显示，4：屏幕宽度大于1200像素时显示 | Boolean, Number                  | 见说明                                                       | 1      |
@@ -70,6 +71,8 @@ npm i vue-viewerjs --save
 | filter           | ✘    | 顾虑器                                                       | Function                         | -                                                            | -      |
 | toggleOnDblclick | ✘    | 双击功能                                                     | Boolean                          | -                                                            | true   |
 
+
+
 ### Slot
 
 | name | 说明                   |
@@ -94,8 +97,6 @@ npm i vue-viewerjs --save
 
 | 方法名   | 说明                                                         | 参数              |
 | -------- | ------------------------------------------------------------ | ----------------- |
-| show     | 显示 immediate = 是否立即显示                                | immediate         |
-| hide     | 隐藏 immediate = 是否立即隐藏                                | immediate         |
 | view     | 切换到图像到索引的图像位置，如果未显示灯箱，将首先显示灯箱。index = 索引 | index             |
 | prev     | 上一张，如果未显示灯箱，将首先显示灯箱。 loop = 是否循环     | loop              |
 | next     | 下一张，如果未显示灯箱，将首先显示灯箱。 loop = 是否循环     | loop              |
