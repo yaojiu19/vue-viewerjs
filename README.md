@@ -21,7 +21,7 @@ npm i vue-viewerjs --save
 ### 使用
 
 ```JS
-<vue-viewer></vue-viewer>
+<vue-viewer v-model=""></vue-viewer>
 
 <script>
     import VueViewer from 'vue-viewerjs'
