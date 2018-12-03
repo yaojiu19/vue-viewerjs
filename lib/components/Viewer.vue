@@ -133,7 +133,7 @@ export default {
     },
     zIndex: {                // z-index值
       type: Number,
-      default: 100
+      default: 9999
     },
     zIndexInline: {          // 内联模式z-index值
       type: Number,
