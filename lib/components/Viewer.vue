@@ -6,9 +6,11 @@
       </slot-container>
     </template>
     <template v-else>
-      <div class="vue_viewer_item" v-for="(item, index) in list" :key="index">
-        <img v-if="(item instanceof Object)" :src="item.url" :alt="item.title">
-        <img v-else :src="item">
+      <div class="vue_viewer_wrapper">
+        <div class="vue_viewer_item" v-for="(item, index) in list" :key="index">
+          <img v-if="(item instanceof Object)" :src="item.url" :alt="item.title">
+          <img v-else :src="item">
+        </div>
       </div>
     </template>
   </div>
@@ -405,14 +407,17 @@ export default {
 </script>
 
 <style lang="scss">
-.vue_viewer_item{
-  display: inline-block;
-  margin: 5px;
-  img{
-    width: 100px;
-    height: 100px;
-    vertical-align: top;
-    object-fit: cover;
+.vue_viewer_wrapper{
+  font-size: 0;
+  .vue_viewer_item{
+    display: inline-block;
+    margin: 5px;
+    img{
+      width: 100px;
+      height: 100px;
+      vertical-align: top;
+      object-fit: cover;
+    }
   }
 }
 </style>

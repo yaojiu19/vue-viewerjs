@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <vue-viewer ref="myViewer" v-model="viewerVal" :visible.sync="isShow">
-      <div v-for="(item, index) in photo" :key="index">
+      <div v-for="(item, index) in photo" :key="index" class="vue_viewer_item">
         <img v-if="(item instanceof Object)" :src="item.url" :alt="item.title">
         <img v-else :src="item">
       </div>
