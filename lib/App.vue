@@ -1,10 +1,15 @@
 <template>
   <div class="">
-    <vue-viewer ref="myViewer" :images="photo" v-model="viewerVal" :visible.sync="isShow">
+    <vue-viewer ref="myViewer" v-model="viewerVal" :visible.sync="isShow">
+      <div v-for="(item, index) in photo" :key="index">
+        <img v-if="(item instanceof Object)" :src="item.url" :alt="item.title">
+        <img v-else :src="item">
+      </div>
     </vue-viewer>
     <div class="btn_group">
       <input type="text" v-model.number="viewerVal">
       <button @click="addPhoto">添加一张图片</button>
+      <button @click="editPhoto">修改第一张图片</button>
       <button @click="view(1)">查看第2张</button>
       <button @click="prev">上一张</button>
       <button @click="next">下一张</button>
@@ -36,7 +41,7 @@ export default {
   },
   data () {
     return {
-      photo: [{url: 'https://dummyimage.com/100x100', title: '哈哈哈'}, 'https://dummyimage.com/110x110', 'https://dummyimage.com/120x120'],
+      photo: [{url: 'https://dummyimage.com/100', title: '哈哈哈'}, 'https://dummyimage.com/100', 'https://dummyimage.com/100'],
       viewerVal: 0,
       isShow: false
     }
@@ -44,9 +49,12 @@ export default {
   methods: {
     addPhoto () {
       this.photo.push({
-        url: 'https://dummyimage.com/130x130',
+        url: 'https://dummyimage.com/100',
         title: '添加的图片'
       })
+    },
+    editPhoto () {
+      this.photo[0].url = 'https://dummyimage.com/200'
     },
     view (index) {
       this.$refs.myViewer.view(1)

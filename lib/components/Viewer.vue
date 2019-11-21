@@ -1,7 +1,9 @@
 <template>
   <div class="vue_viewer" ref="viewer">
     <template v-if="$slots.default">
-      <slot></slot>
+      <slot-container @update="update">
+        <slot></slot>
+      </slot-container>
     </template>
     <template v-else>
       <div class="vue_viewer_item" v-for="(item, index) in list" :key="index">
@@ -15,6 +17,7 @@
 <script type="text/ecmascript-6">
 import Viewer from 'viewerjs'
 import 'viewerjs/dist/viewer.css'
+import container from '../base/container'
 
 const TOOLBAR_OPTIONS = {    // {key: Boolean | Number | String | Function}，{key: {show: Boolean | Number, size: String, click: Function }}， sizes: "small", "medium" (default) and "large"
   zoomIn: 1,
@@ -31,7 +34,6 @@ const TOOLBAR_OPTIONS = {    // {key: Boolean | Number | String | Function}，{k
 }
 
 export default {
-  name: 'VueViewer',
   props: {
     images: {
       type: [String, Object, Array]
@@ -158,6 +160,9 @@ export default {
       type: Number
     }
   },
+  components: {
+    SlotContainer: container,
+  },
   data () {
     return {
       list: [],
@@ -187,7 +192,7 @@ export default {
     value () {
       if (!this.value && this.value !== 0) return
       this.view(this.value)
-    }
+    },
   },
   created () {
     this._optionsInit()
