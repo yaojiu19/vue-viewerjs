@@ -70,6 +70,10 @@ npm i vue-viewerjs --save
 | container        | ✘    | 插入位置                                                     | Element, String                  | -                                                            | body   |
 | filter           | ✘    | 顾虑器                                                       | Function                         | -                                                            | -      |
 | toggleOnDblclick | ✘    | 双击功能                                                     | Boolean                          | -                                                            | true   |
+| className        | ✘    | 灯箱根元素的自定义类名                                          | Boolean                          | -                                                            | true   |
+| zoomOnTouch      | ✘    | 移动端触摸                                                    | Boolean                          | -                                                            | true   |
+| zoomOnWheel      | ✘    | 鼠标滚轮缩放                                                  | Boolean                          | -                                                            | true   |
+| slideOnTouch     | ✘    | 移动端滑动切换上下一张图片                                       | Boolean                          | -                                                            | true   |
 
 
 
