@@ -16,7 +16,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "viewerjs": "^1.2.0",
+    "viewerjs": "^1.5.0",
     "vue": "^2.5.11"
   },
   "browserslist": [
