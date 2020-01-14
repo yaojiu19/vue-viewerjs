@@ -1,10 +1,12 @@
 <template>
   <div class="">
-    <vue-viewer ref="myViewer" v-model="viewerVal" :visible.sync="isShow">
-      <div v-for="(item, index) in photo" :key="index" class="vue_viewer_item">
-        <img v-if="(item instanceof Object)" :src="item.url" :alt="item.title">
-        <img v-else :src="item">
-      </div>
+    <vue-viewer
+      ref="myViewer"
+      className="my_class"
+      v-model="viewerVal"
+      :visible.sync="isShow"
+      :images="photo"
+    >
     </vue-viewer>
     <div class="btn_group">
       <input type="text" v-model.number="viewerVal">

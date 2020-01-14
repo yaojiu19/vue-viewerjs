@@ -160,7 +160,20 @@ export default {
     },
     value: {
       type: Number
-    }
+    },
+    className: String,
+    zoomOnTouch: {           // 移动端触摸
+      type: Boolean,
+      default: true
+    },
+    zoomOnWheel: {           // 鼠标滚轮缩放
+      type: Boolean,
+      default: true
+    },
+    slideOnTouch: {           // 移动端滑动切换上下一张图片
+      type: Boolean,
+      default: true
+    },
   },
   components: {
     SlotContainer: container,
@@ -251,6 +264,10 @@ export default {
         container: this.container,
         filter: this.filter,
         toggleOnDblclick: this.toggleOnDblclick,
+        className: this.className,
+        zoomOnTouch: this.zoomOnTouch,
+        zoomOnWheel: this.zoomOnWheel,
+        slideOnTouch: this.slideOnTouch,
         ready: (event) => {                 // 初始化ready事件
           this.$emit('ready', event)
         },
@@ -282,7 +299,7 @@ export default {
         },
         zoomed: (event) => {                // 缩放事件-结束
           this.$emit('zoomed', event)
-        }
+        },
       })
       if (this.visible) {
         this.show()
